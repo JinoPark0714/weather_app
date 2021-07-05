@@ -7,6 +7,14 @@ const fs = require('fs');
 const app = express();
 const PORT = process.env.PORT || 40900;
 
+// 로그 기록을 남기는 기능을 한다.
+// 값에 따라 남겨지는 용도가 다르다.
+// dev      (개발)
+// short    (개발)
+// common   (배포)
+// combined (배포)
+const morgan = require('morgan');
+
 
 /**
  * 서버 정보 설정
@@ -14,6 +22,7 @@ const PORT = process.env.PORT || 40900;
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 app.use(cors());
+app.use(morgan('common'));
 
 /**
  * 라우터 정의
