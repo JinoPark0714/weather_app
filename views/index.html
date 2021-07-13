@@ -3,8 +3,52 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="/js/index.js"></script>
+    <link href="/css/index.css" rel="stylesheet">
   </head>
   <body>
+    <section class='myGrid'>
+      <div class='header'>
+        <div class='headerPos'></div>
+        <div class='headerParent'>
+          <h2>날씨 보기 앱</h2>
+        </div>
+        <div class='headerPos'></div>
+      </div>
+      <div class='leftSidebar'></div>
+      <div class='body'>
+        <div class="bodyInputForm">
+          <form method="GET" action="/weather/oneCall">
+            <div class='margin'>
+              <label>지역(도시)</label>
+            </div>
+            <div class='margin'>
+              <input type="text" id="city" placeholder="도시 이름 입력">
+            </div>
+            <div class='margin'>
+              <input type="submit" value="Confirm identity">
+            </div>
+          </form>
+        </div>
 
+        <div class="bodyInputForm">
+          <div class='margin'>result</div>
+          <div id="result" class='margin'></div>
+        </div>
+      </div>
+      <div class='rightSidebar'></div>
+    </section>
+    <!-- <form method="GET" action="/getWeather">
+      <div class="container_test">
+        <div class="col-auto">
+          <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>
+        </div>
+        <div id="result">
+        </div>
+      </div>
+    </form> -->
   </body>
 </html>

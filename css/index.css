@@ -1,0 +1,68 @@
+.myGrid {
+  width: 1366px;
+  height: 750px;
+  display: grid;
+  grid: 
+    "header header header" 120px
+    "leftSidebar body rightSidebar" 1fr
+    "footer footer footer" auto
+    / 120px 1fr 120px;
+  grid-gap: 16px;
+}
+
+/*=========================   head   =========================*/
+.header {
+  grid-area: header;
+}
+
+.headerPos{
+  width:1366px;
+  height:25%;
+}
+
+.h2{
+  padding: 5px;
+}
+
+.headerParent{
+  width:100%;
+  height: 50%;
+  text-align: center;
+  position: relative;
+}
+
+.headerChild{
+  display : inline-block;
+}
+
+/*=========================   head   =========================*/
+
+/*=========================   body   =========================*/
+.body {
+  grid-area: body;
+}
+
+.bodyInputForm{
+  width:65%;
+}
+
+.margin{
+  margin: 15px;
+}
+
+/*=========================   body   =========================*/
+.rightSidebar {
+  grid-area: rightSidebar;
+}
+
+.footer {
+  grid-area: footer;
+}
+
+.myGrid > div {
+  background: #dddddd;
+}
+
+.leftSidebar {
+  grid-area: leftSidebar;
+}
