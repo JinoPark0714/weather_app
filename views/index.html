@@ -18,37 +18,21 @@
         </div>
         <div class='headerPos'></div>
       </div>
-      <div class='leftSidebar'></div>
-      <div class='body'>
+      <div class='leftSidebar'>
         <div class="bodyInputForm">
-          <form method="GET" action="/weather/oneCall">
-            <div class='margin'>
-              <label>지역(도시)</label>
-            </div>
-            <div class='margin'>
-              <input type="text" id="city" placeholder="도시 이름 입력">
-            </div>
-            <div class='margin'>
-              <input type="submit" value="Confirm identity">
-            </div>
-          </form>
+          <div class='margin'>
+            <button type="button" onclick="onClickgetWeather()">오늘의 날씨</button>
+          </div>
         </div>
 
         <div class="bodyInputForm">
-          <div class='margin'>result</div>
           <div id="result" class='margin'></div>
         </div>
       </div>
+      <div class='body'>
+        
+      </div>
       <div class='rightSidebar'></div>
     </section>
-    <!-- <form method="GET" action="/getWeather">
-      <div class="container_test">
-        <div class="col-auto">
-          <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>
-        </div>
-        <div id="result">
-        </div>
-      </div>
-    </form> -->
   </body>
 </html>

@@ -22,37 +22,28 @@ function getH2(state, param){
  * @param {*} param 
  */
 function convertKr(param){
-  let data;
-  switch(param){
-    case "Clouds":
-      data = "흐림";
-      break;
-    case "Mist":
-      data = "안개";
-      break;
-  }
-  return data;
 }
 
 window.onload = () => {
+  onClickgetWeather();
 };
 
 
 function onClickgetWeather(){
-  const cityName = getID('city').value;
   $.ajax({
     type : "GET",
-    url : `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=c4752dbd6e3cc9737879b80ef9cfd01f`,
-    // url : `api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=c4752dbd6e3cc9737879b80ef9cfd01f`,
-    // url : `api.openweathermap.org/data/2.5/forecast/hourly?q=${cityName}&appid=c4752dbd6e3cc9737879b80ef9cfd01f`,
+    url : '/weather/oneCall',
     contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
-    success : (data)=>{
-      const weatherInfo = (data);
-      let weatherState = getH2('날씨', weatherInfo.weather[0].main);
-      const cityName = getH2('지역', weatherInfo.name);
-      let div = getID('result');
-      div.innerHTML = weatherState;
-      div.innerHTML += cityName;
+    success : (weatherData)=>{
+      let str = '';
+      for(let i = 0; i < weatherData.length; i++){
+        str += `<h3>date : ${weatherData[i].date.month}월 ${weatherData[i].date.date}일 ${weatherData[i].date.day} ${weatherData[i].date.hour}시 </h3>`;
+        str += `<h3>온도 : ${weatherData[i].temp}도</h3>`;
+        str += `<h3>체감온도 : ${weatherData[i].feels_like}도</h3>`;
+        str += `<h3>기상상태 : ${weatherData[i].description}</h3>`;
+      }
+      let resDiv = getID('result');
+      resDiv.innerHTML = str;
     },
     error : (err)=>{
       console.log(err);
