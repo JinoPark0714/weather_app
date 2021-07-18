@@ -24,25 +24,24 @@ router.get('/oneCall', (req, res)=>{
        * hourly.feels_like      체감온도
        * weather[0].description 기상상태
        */
-      console.log(`myData.hourly.length : ${myData.hourly.length}`);
       const length = myData.hourly.length - 24; // 시간별 48개니까 12개만 받아옴
-      
+      console.log(`myData.hourly.length : ${length}`);
+
       let weatherArr = [];
       for(let i = 0; i < length; i++){
         let result = myData.hourly[i];
         let weather = {};
   
         // new Date(num)의 num은 밀리 초를 나타내기 때문에 1000을 곱하여 초로 변환한다.
-        result.dt = new Date(result.dt * 1000);
-
+        result.dt = new Date((result.dt * 1000));
         weather.date = common.getDate(result.dt);
         weather.temp = parseInt(result.temp);
         weather.feels_like = parseInt(result.feels_like);
         weather.description = result.weather[0].description;
 
         // 날씨 정보 출력
-        console.log(`${i+1}번`);
-        common.printWeather(weather);
+        // console.log(`${i+1}번`);
+        // common.printWeather(weather);
         
         weatherArr.push(weather);
       }

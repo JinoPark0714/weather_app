@@ -9,25 +9,25 @@ let common = {};
  common.convertDay = (param) => {
   switch(param){
     case 0:
-      param = '일요일';
+      param = '일';
       break;
     case 1:
-      param = '월요일';
+      param = '월';
       break;
     case 2:
-      param = '화요일';
+      param = '화';
       break;
     case 3:
-      param = '수요일';
+      param = '수';
       break;
     case 4:
-      param = '목요일';
+      param = '목';
       break;
     case 5:
-      param = '금요일';
+      param = '금';
       break;
     case 6:
-      param = '토요일';
+      param = '토';
       break;
   }
 
