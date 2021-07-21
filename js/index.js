@@ -44,7 +44,7 @@ function onClickgetWeather(){
       // 현재 텍스트로 출력되는 부분
       for(let i = 0; i < weatherData.length; i++){
         let newDiv = document.createElement('div');
-        newDiv.className = 'col';
+        newDiv.className = 'weatherBlock';
         newDiv.id = i;
         newDiv.style.display='inline-block';
         newDiv.style.margin='10px';
@@ -52,6 +52,8 @@ function onClickgetWeather(){
         str += `<h5>온도 : ${weatherData[i].temp}도</h5>`;
         str += `<h5>체감온도 : ${weatherData[i].feels_like}도</h5>`;
         str += `<h5>기상상태 : ${weatherData[i].description}</h5>`;
+        str += `<h5>기상ID : ${weatherData[i].id}</h5>`;
+        str += `<h5>아이콘 : ${weatherData[i].icon}</h5>`;
         newDiv.innerHTML = str;
         rowDiv.append(newDiv);
         str = '';

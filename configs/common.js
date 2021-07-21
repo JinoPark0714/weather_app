@@ -60,6 +60,8 @@ common.printWeather = (param)=>{
   console.log(`온도 : ${param.temp}`);
   console.log(`체감온도 : ${param.feels_like}`);
   console.log(`기상상태 : ${param.description}`);
+  console.log(`기상ID : ${param.id}`);
+  console.log(`아이콘 : ${param.icon}`);
   console.log('===========================================');
 };
 

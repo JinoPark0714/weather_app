@@ -35,6 +35,14 @@
 }
 
 .mainGrid > div {
-  background: #eeeeee;
+  background: #fafafa;
 }
 
+
+.weatherBlock{
+  width: 210px;
+  height : 210px;
+  background-color: #e3f7ff;
+  padding: 10px;
+  margin: 10px;
+}

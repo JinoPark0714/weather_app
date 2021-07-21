@@ -38,10 +38,11 @@ router.get('/oneCall', (req, res)=>{
         weather.temp = parseInt(result.temp);
         weather.feels_like = parseInt(result.feels_like);
         weather.description = result.weather[0].description;
-
+        weather.id = result.weather[0].id;
+        weather.icon = result.weather[0].icon;
         // 날씨 정보 출력
         // console.log(`${i+1}번`);
-        // common.printWeather(weather);
+        common.printWeather(weather);
         
         weatherArr.push(weather);
       }
