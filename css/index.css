@@ -25,9 +25,11 @@
 
 .weatherInfo{
   width: 1000px;
+  height: 400px;
   overflow-x: auto;
   white-space: nowrap;
 }
+
 
 /*=========================   body   =========================*/
 .footer {
@@ -40,8 +42,9 @@
 
 
 .weatherBlock{
-  width: 210px;
-  height : 210px;
+  width: auto;
+  height : auto;
+  display: inline-block;
   background-color: #e3f7ff;
   padding: 10px;
   margin: 10px;

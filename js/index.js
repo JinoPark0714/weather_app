@@ -37,29 +37,22 @@ function onClickgetWeather(){
     contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
     success : (weatherData)=>{
       let str = '';
-      let tempArr = new Array();
-      let weatherArr = {};
       let rowDiv = getID('row');
       console.log(weatherData);
       // 현재 텍스트로 출력되는 부분
       for(let i = 0; i < weatherData.length; i++){
         let newDiv = document.createElement('div');
+        // CSS 설정
         newDiv.className = 'weatherBlock';
-        newDiv.id = i;
-        newDiv.style.display='inline-block';
-        newDiv.style.margin='10px';
-        str += `<h5>date : ${weatherData[i].date.month}/${weatherData[i].date.date} ${weatherData[i].date.day} ${weatherData[i].date.hour}시 </h5>`;
-        str += `<h5>온도 : ${weatherData[i].temp}도</h5>`;
-        str += `<h5>체감온도 : ${weatherData[i].feels_like}도</h5>`;
-        str += `<h5>기상상태 : ${weatherData[i].description}</h5>`;
-        str += `<h5>기상ID : ${weatherData[i].id}</h5>`;
-        str += `<h5>아이콘 : ${weatherData[i].icon}</h5>`;
+        str += `<p>date : ${weatherData[i].date.month}/${weatherData[i].date.date} ${weatherData[i].date.day} ${weatherData[i].date.hour}시 </p>`;
+        str += `<p>온도 / 체감온도 : ${weatherData[i].temp} / ${weatherData[i].feels_like}</p>`;
+        str += `<p>기상상태 : ${weatherData[i].description}</p>`;
+        // str += `<p>기상ID : ${weatherData[i].id}</p>`;
+        // str += `<p>아이콘 : ${weatherData[i].icon}</p>`;
+        str += `<img src=http://openweathermap.org/img/wn/${weatherData[i].icon}@2x.png>`;
         newDiv.innerHTML = str;
         rowDiv.append(newDiv);
         str = '';
-        // weatherArr.temp = weatherData[i].temp;
-        // weatherArr.time = weatherData[i].date.hour;
-        // tempArr.push(weatherArr);
       }
       //drawTempGraph(tempArr);
     },
@@ -69,6 +62,7 @@ function onClickgetWeather(){
     }
   })
 };
+
 
 function drawTempGraph(tempArr) {
   const ctx = document.getElementById('myChart').getContext('2d');
