@@ -17,13 +17,14 @@
       </div>
 
       <div class='body'>
+        <select name="location" id="location" onchange="onChangeLocation()">
+          <option value="" selected>지역 선택</option>
+          <option value="Busan">부산</option>
+          <option value="Seoul">서울</option>
+        </select>
 
         <div class="weatherInfo" id="row">
         </div>
-      </div>
-
-      <div class='footer'>
-        <canvas id="myChart" width="400" height="300"></canvas>
       </div>
     </section>
   </body>

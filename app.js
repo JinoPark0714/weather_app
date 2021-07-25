@@ -3,8 +3,7 @@
  */
 const express = require('express');
 const cors = require('cors');
-const fs = require('fs');
-const app = express();
+const fs = require('fs');const app = express();
 const PORT = process.env.PORT || 40900;
 
 // 로그 기록을 남기는 기능을 한다.
@@ -45,5 +44,8 @@ app.use('/weather', weatherRouter);
  * 서버 가동
  */
 const server = app.listen(PORT, ()=>{
+  if(!fs.existsSync('log')){
+    fs.mkdirSync('./log');
+  }
   console.log(`start server : ${PORT}`);
 });

@@ -1,5 +1,5 @@
 .mainGrid {
-  width: 1366px;
+  width: 1000px;
   height: 750px;
   display: grid;
   grid: 
@@ -30,6 +30,23 @@
   white-space: nowrap;
 }
 
+/* 스크롤바 스타일링 (크롬, 사파리, 오페라 한정)*/
+.weatherInfo::-webkit-scrollbar {
+  width: 10px;
+}
+.weatherInfo::-webkit-scrollbar-thumb {
+  background-color: #2f3542;
+  border-radius: 10px;
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+.weatherInfo::-webkit-scrollbar-track {
+  background-color: grey;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px white;
+}
+
+
 
 /*=========================   body   =========================*/
 .footer {
@@ -37,15 +54,14 @@
 }
 
 .mainGrid > div {
-  background: #fafafa;
+  background: #ffffff;
 }
 
 
 .weatherBlock{
-  width: auto;
+  width: 250px;
   height : auto;
   display: inline-block;
-  background-color: #e3f7ff;
+  background-color: #ffffff;
   padding: 10px;
-  margin: 10px;
 }

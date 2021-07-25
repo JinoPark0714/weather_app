@@ -9,7 +9,11 @@ const common = require('../configs/common');
  * 우선 테스트는 부산을 목표로
  */
 router.get('/oneCall', (req, res)=>{
-  const uri = openWeather.getOneCallPos(35.17944, 129.07556);
+  const {lat, lon} = req.query;
+  
+  console.log(`위도 : ${lat}`);
+  console.log(`경도 : ${lon}`);
+  const uri = openWeather.getOneCallPos(lat, lon);
   const param = {uri : uri};
   new Promise((resolve, reject)=>{
     request(param,(err, res, body)=>{
@@ -40,10 +44,10 @@ router.get('/oneCall', (req, res)=>{
         weather.description = result.weather[0].description;
         weather.id = result.weather[0].id;
         weather.icon = result.weather[0].icon;
+
         // 날씨 정보 출력
-        // console.log(`${i+1}번`);
+        console.log(`${i+1}번`);
         common.printWeather(weather);
-        
         weatherArr.push(weather);
       }
       resolve(weatherArr);
