@@ -1,5 +1,5 @@
 .mainGrid {
-  width: 1000px;
+  width: 360px;
   height: 750px;
   display: grid;
   grid: 
@@ -24,7 +24,7 @@
 }
 
 .weatherInfo{
-  width: 1000px;
+  width: 360px;
   height: 400px;
   overflow-x: auto;
   white-space: nowrap;
@@ -46,7 +46,9 @@
   box-shadow: inset 0px 0px 5px white;
 }
 
-
+p{
+  font-size: 10pt;
+}
 
 /*=========================   body   =========================*/
 .footer {
@@ -58,10 +60,13 @@
 }
 
 
+/*
+ * 날씨정보를 불러오는 곳
+ */
 .weatherBlock{
-  width: 250px;
+  width: 200px;
   height : auto;
   display: inline-block;
   background-color: #ffffff;
-  padding: 10px;
+  padding: 5px;
 }

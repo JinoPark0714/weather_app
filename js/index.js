@@ -7,14 +7,8 @@ function getID(param){
   return document.getElementById(param);
 }
 
-/**
- * 
- * @param {*} state 
- * @param {*} param 
- * @returns 
- */
-function getH2(state, param){
-  return `<h2>${state} : ${param}</h2>`;
+function isVoid(param){
+  return param == "";
 }
 
 
@@ -29,17 +23,26 @@ window.onload = () => {
 function onChangeLocation(){
   const location = getID('location');
   let lat, lon;
-  switch(location.value){
-    case 'Busan':
-      lat = 35.17944;
-      lon = 129.07556;
-      getWeather(lat, lon);
-      break;
-    case 'Seoul':
-      lat = 37.5642135;
-      lon = 127.0016985;
-      getWeather(lat, lon);
-      break;
+  if(!isVoid(location.value)){
+    switch(location.value){
+      case 'Busan':
+        lat = 35.16193;
+        lon = 129.04403;
+        break;
+      case 'Seoul':
+        lat = 37.55048;
+        lon = 126.98959;
+        break;
+      case 'Ulsan':
+        lat = 35.549455;
+        lon = 129.254829;
+        break;
+      case 'Daegu':
+        lat = 35.82607;
+        lon = 128.56818;
+        break;
+    }
+    getWeather(lat, lon);
   }
 }
 
@@ -82,36 +85,6 @@ function getWeather(lat, lon){
     }
   })
 };
-
-// function onClickgetWeather(){
-//   $.ajax({
-//     type : "GET",
-//     url : '/weather/oneCall',
-//     contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
-//     success : (weatherData)=>{
-//       let str = '';
-//       let rowDiv = getID('row');
-//       console.log(weatherData);
-//       // 현재 텍스트로 출력되는 부분
-//       for(let i = 0; i < weatherData.length; i++){
-//         let newDiv = document.createElement('div');
-//         newDiv.className = 'weatherBlock';
-//         str += `<p>date : ${weatherData[i].date.month}/${weatherData[i].date.date} ${weatherData[i].date.day} ${weatherData[i].date.hour}시 </p>`;
-//         str += `<p>온도 / 체감 : ${weatherData[i].temp}℃ / ${weatherData[i].feels_like}℃</p>`;
-//         str += `<p>기상상태 : ${weatherData[i].description}</p>`;
-//         str += `<img src=http://openweathermap.org/img/wn/${weatherData[i].icon}@2x.png>`;
-//         newDiv.innerHTML = str;
-//         rowDiv.append(newDiv);
-//         str = '';
-//       }
-//       //drawTempGraph(tempArr);
-//     },
-//     error : (err)=>{
-//       console.log(err);
-//       document.body.innerHTML = `<h2> ${err}</h2>`;
-//     }
-//   })
-// };
 
 
 function drawTempGraph(tempArr) {
