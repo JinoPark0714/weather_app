@@ -14,6 +14,10 @@ const PORT = process.env.PORT || 40900;
 // combined (배포)
 const morgan = require('morgan');
 
+// log 폴더 생성
+if(!fs.existsSync('log')){
+  fs.mkdirSync('log');
+}
 
 /**
  * 서버 정보 설정
@@ -44,8 +48,5 @@ app.use('/weather', weatherRouter);
  * 서버 가동
  */
 const server = app.listen(PORT, ()=>{
-  if(!fs.existsSync('log')){
-    fs.mkdirSync('./log');
-  }
   console.log(`start server : ${PORT}`);
 });

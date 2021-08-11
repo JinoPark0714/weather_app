@@ -2,7 +2,6 @@ let openWeather = {};
 
 openWeather.key = '935b7bcf1345fd766f3108777f4afe94';
 openWeather.name = "weather";
-
 openWeather.city = "Seoul";
 
 // Request URI
@@ -15,16 +14,12 @@ openWeather.getCurrentWeather = (cityName)=>{
 };
 
 /**
- * 위도, 경도를 입력하여 해당 위치의 날씨를 나타낸다.
- * 
- * lat : 위도
- * 
- * lon : 경도
- * @param {Number} lat 
- * @param {Number} lon 
+ * 위도, 경도를 입력하여 해당 위치의 날씨를 나타낼 URL을 반환한다.
+ * @param {Number} lat - 위도
+ * @param {Number} lon - 경도
  * @returns {String}
  */
-openWeather.getOneCallPos = (lat, lon) =>{
+openWeather.getURLOneCallPos = (lat, lon) =>{
   return `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=935b7bcf1345fd766f3108777f4afe94&units=metric&lang=kr`;
 };
 

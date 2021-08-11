@@ -56,7 +56,7 @@ function getWeather(lat, lon){
   };
   $.ajax({
     type : "GET",
-    url : '/weather/oneCall',
+    url : '/weather/get/onecall',
     data : param,
     dataType : 'json',
     contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -72,6 +72,9 @@ function getWeather(lat, lon){
         str += `<p>date : ${weatherData[i].date.month}/${weatherData[i].date.date} ${weatherData[i].date.day} ${weatherData[i].date.hour}시 </p>`;
         str += `<p>온도 / 체감 : ${weatherData[i].temp}℃ / ${weatherData[i].feels_like}℃</p>`;
         str += `<p>기상상태 : ${weatherData[i].description}</p>`;
+
+        // 기상 상태 아이콘 식별값을 통해 
+        // openWeatherMap이 제공해주는 아이콘 이미지를 받아온다.
         str += `<img src=http://openweathermap.org/img/wn/${weatherData[i].icon}@2x.png>`;
         newDiv.innerHTML = str;
         rowDiv.append(newDiv);
