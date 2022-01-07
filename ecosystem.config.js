@@ -13,7 +13,10 @@ module.exports = {
     script : "./app.js",
 
     // 서버 내 파일의 변경사항이 적용되면 서버 재실행
-    watch : false,
+    watch : ["route", "views", "css"],
+
+    // 재시작 딜레이
+    restart_delay : 2000,
 
     // 다음 폴더들은 변경사항이 있어도 watch가 적용되지 않음.
     ignore_watch : ["log", ".git"],

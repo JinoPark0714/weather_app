@@ -1,31 +1,44 @@
-.mainGrid {
+.main{
   width: 360px;
-  height: 750px;
-  display: grid;
-  grid: 
-    "header" 0.5fr
-    "body" 1fr
-    "footer" 0.3fr
-    / 1fr;
-  grid-gap: 16px;
+  height: 550px;
+  flex-direction: column;
+  display: flex;
 }
 
-/*=========================   head   =========================*/
-.header {
-  grid-area: header;
+.title{
+  width: 100%;
+  height: 100px;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  
 }
 
-/*=========================   head   =========================*/
+h2{
+  font-weight: 900;
+}
 
-/*=========================   body   =========================*/
-.body {
-  grid-area: body;
+.selectArea{
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.selectBox{
+  width: 150px;
+  height: 50px;
+  border-radius: 0.525rem;
+}
+
+.selectBox:hover{
+  border: 3px solid #000;
 }
 
 .weatherInfo{
   width: 360px;
-  height: 400px;
+  height: 300px;
   overflow-x: auto;
   white-space: nowrap;
 }
@@ -48,15 +61,6 @@
 
 p{
   font-size: 10pt;
-}
-
-/*=========================   body   =========================*/
-.footer {
-  grid-area: footer;
-}
-
-.mainGrid > div {
-  background: #ffffff;
 }
 
 

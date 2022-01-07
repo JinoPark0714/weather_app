@@ -1,6 +1,5 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-
 
 /**
  * index.html 연결
@@ -16,6 +15,5 @@ const router = express.Router();
 router.get('/errorpage', (req, res)=>{
   res.render('errorpage');
 });
-
 
 module.exports = router;

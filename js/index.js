@@ -1,8 +1,3 @@
-/**
- * ID 받아오기
- * @param {string} param 
- * @returns 
- */
 function getID(param){
   return document.getElementById(param);
 }
@@ -12,15 +7,10 @@ function isVoid(param){
 }
 
 
-
-window.onload = () => {
-  
-};
-
 /**
- * 영어로 표기된 것을 한글로 변환
+ * 선택 시, 날씨 정보를 받아온다.
  */
-function onChangeLocation(){
+const onChangeLocation = async() => {
   const location = getID('location');
   let lat, lon;
   if(!isVoid(location.value)){
@@ -42,51 +32,52 @@ function onChangeLocation(){
         lon = 128.56818;
         break;
     }
-    getWeather(lat, lon);
+    const weatherArray = await getWeatherArray(lat, lon);
+    console.log(weatherArray);
+    renderWeather(weatherArray);
+    // getWeather(lat, lon);
   }
-}
+};
+
+const renderWeather = (weatherArray) => {
+  let str = '';
+  let rowDiv = getID('row');
+  rowDiv.innerHTML = '';
+  const length = 24;
+  for(let i = 0; i < length; i++){
+    let newDiv = document.createElement('div');
+    newDiv.className = 'weatherBlock';
+    str += `<p>date : ${weatherArray[i].date.month}/${weatherArray[i].date.date} ${weatherArray[i].date.day} ${weatherArray[i].date.hour}시 </p>`;
+    str += `<p>온도 / 체감 : ${weatherArray[i].temp}℃ / ${weatherArray[i].feels_like}℃</p>`;
+    str += `<p>기상상태 : ${weatherArray[i].description}</p>`;
+
+    // 기상 상태 아이콘 식별값을 통해 
+    // openWeatherMap이 제공해주는 아이콘 이미지를 받아온다.
+    str += `<img src=http://openweathermap.org/img/wn/${weatherArray[i].icon}@2x.png>`;
+    newDiv.innerHTML = str;
+    rowDiv.append(newDiv);
+    str = '';
+  }
+};
 
 /**
- * 날씨 정보를 받아옴.
+ * 날씨 정보를 받아온다.
+ * @param {string} lat - 위도
+ * @param {string} lon - 경도 
+ * @returns 
  */
-function getWeather(lat, lon){
-  const param = {
-    "lat" : lat,
-    "lon" : lon
+const getWeatherArray = async(lat, lon) => {
+  const t = {
+    method : "POST",
+    headers : {"Content-Type" : "application/json"},
+    body : JSON.stringify({
+      lat : lat,
+      lon : lon
+    })
   };
-  $.ajax({
-    type : "GET",
-    url : '/weather/get/onecall',
-    data : param,
-    dataType : 'json',
-    contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
-    success : (weatherData)=>{
-      let str = '';
-      let rowDiv = getID('row');
-      rowDiv.innerHTML = '';
-      console.log(weatherData);
-      // 현재 텍스트로 출력되는 부분
-      for(let i = 0; i < weatherData.length; i++){
-        let newDiv = document.createElement('div');
-        newDiv.className = 'weatherBlock';
-        str += `<p>date : ${weatherData[i].date.month}/${weatherData[i].date.date} ${weatherData[i].date.day} ${weatherData[i].date.hour}시 </p>`;
-        str += `<p>온도 / 체감 : ${weatherData[i].temp}℃ / ${weatherData[i].feels_like}℃</p>`;
-        str += `<p>기상상태 : ${weatherData[i].description}</p>`;
-
-        // 기상 상태 아이콘 식별값을 통해 
-        // openWeatherMap이 제공해주는 아이콘 이미지를 받아온다.
-        str += `<img src=http://openweathermap.org/img/wn/${weatherData[i].icon}@2x.png>`;
-        newDiv.innerHTML = str;
-        rowDiv.append(newDiv);
-        str = '';
-      }
-      //drawTempGraph(tempArr);
-    },
-    error : (err)=>{
-      console.log(err);
-      document.body.innerHTML = `<h2> ${err}</h2>`;
-    }
-  })
+  const response = await fetch("/weather/onecall", t);
+  const data = await response.json();
+  return data;
 };
 
 

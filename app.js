@@ -34,13 +34,14 @@ app.use('/css', express.static(__dirname + '/css'));
 /**
  * 라우터 정의
  */
-const pageConnRouter = require('./routes/pageConn');
-const weatherRouter = require('./routes/weather');
+const weatherRouter = require('./route/controller/weather');
+const indexRouter = require('./route/controller/index');
+
 
 /**
  * 서버를 구성하기 위한 라우터 연결
  */
-app.use('/', pageConnRouter);
+app.use('/', indexRouter);
 app.use('/weather', weatherRouter);
 
 
