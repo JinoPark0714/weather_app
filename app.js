@@ -3,7 +3,8 @@
  */
 const express = require('express');
 const cors = require('cors');
-const fs = require('fs');const app = express();
+const fs = require('fs');
+const app = express();
 const PORT = process.env.PORT || 40900;
 
 // 로그 기록을 남기는 기능을 한다.
@@ -28,13 +29,13 @@ app.use(express.json());
 app.use(cors());
 app.use(morgan('dev'));
 app.use('/', express.static(__dirname + '/views'));
-app.use('/js', express.static(__dirname + '/js'));
-app.use('/css', express.static(__dirname + '/css'));
+// app.use('/js', express.static(__dirname + '/js'));
+// app.use('/css', express.static(__dirname + '/css'));
 
 /**
  * 라우터 정의
  */
-const weatherRouter = require('./route/controller/weather');
+const onecallRouter = require('./route/controller/onecall');
 const indexRouter = require('./route/controller/index');
 
 
@@ -42,8 +43,7 @@ const indexRouter = require('./route/controller/index');
  * 서버를 구성하기 위한 라우터 연결
  */
 app.use('/', indexRouter);
-app.use('/weather', weatherRouter);
-
+app.use('/onecall', onecallRouter);
 
 /**
  * 서버 가동
@@ -51,3 +51,5 @@ app.use('/weather', weatherRouter);
 const server = app.listen(PORT, ()=>{
   console.log(`start server : ${PORT}`);
 });
+
+module.exports = app;
