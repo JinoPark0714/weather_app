@@ -17,27 +17,38 @@ function findLocation(value){
 const array = [
   {
     name : 'Busan',
-    lat : 35.16193,
-    lon : 129.04403
+    koreanName : '부산',
+    latitude : 35.16193,
+    longitude : 129.04403
   },
   {
     name : 'Seoul',
-    lat : 37.55048,
-    lon : 126.98959
+    koreanName : '서울',
+    latitude : 37.55048,
+    longitude : 126.98959
   },
   {
     name : 'Ulsan',
-    lat : 35.549455,
-    lon : 129.254829
+    koreanName : '울산',
+    latitude : 35.549455,
+    longitude : 129.254829
   },
   {
     name : 'Daegu',
-    lat : 35.82607,
-    lon : 128.56818
+    koreanName : '대구',
+    latitude : 35.82607,
+    longitude : 128.56818
+  },
+  {
+    name : 'Gumi',
+    koreanName : '구미',
+    latitude : 36.119485,
+    longitude : 128.3445734
   },
   {
     name : 'Gyeonggi-do',
-    lat : 35.95,
-    lon : 128.25
+    koreanName : '경기도',
+    latitude : 35.95,
+    longitude : 128.25
   }
 ]

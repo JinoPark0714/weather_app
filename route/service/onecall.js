@@ -2,8 +2,9 @@ const axios = require('axios');
 const Common = require('../../configs/common');
 const URL = require('../../api/openWeather');
 
-class OneCallService{
-  constructor(){}
+class OneCallService {
+
+  constructor() { }
 
   /**
    * 날씨 정보를 받아 옴.
@@ -15,7 +16,7 @@ class OneCallService{
       const data = await response.data.hourly;
       return data;
     } catch (error) {
-      return null;
+      return new Error("Internal Error");
     }
   }
 
@@ -23,15 +24,13 @@ class OneCallService{
    * 시간별 날씨 정보 보기
    * @param {stirng} latitude - 위도
    * @param {string} longitude - 경도
-   * 1. uri를 받는다
-   * 2. 종합적인 날씨 정보를 받는다.
-   * 3. 필요한 정보만 파싱하여 반환한다.
    */
   getWeatherArrayByHour = async (latitude, longitude) => {
     const url = URL.getOneCallPosURL(latitude, longitude);
     const weatherArray = await this.getWeathers(url);
     const responseWeatherArray = await this.#getWeatherArray(weatherArray);
     return responseWeatherArray;
+
   }
 
   /**
@@ -45,7 +44,6 @@ class OneCallService{
     for (let i = 0; i < length; i++) {
       if (i === 24)
         break;
-      console.log(weathers[i]);
       const weather = weathers[i];
       const dateTime = new Date(weather.dt * 1000);
       const { id, description, icon } = weather.weather[0];
@@ -76,5 +74,5 @@ class OneCallService{
 }
 
 module.exports = {
-  OneCallService : OneCallService
+  OneCallService: OneCallService
 };

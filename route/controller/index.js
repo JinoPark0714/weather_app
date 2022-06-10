@@ -5,7 +5,7 @@ const router = express.Router();
  * index.html 연결
  */
  router.get('/', (req,res)=>{
-  res.render('index.html');
+  res.render('index');
 });
 
 
